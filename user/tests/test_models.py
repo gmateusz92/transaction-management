@@ -1,7 +1,9 @@
-from django.test import TestCase
 from django.contrib.auth.models import User
-from user.models import Profile
+from django.test import TestCase
 from django.utils import timezone
+
+from user.models import Profile
+
 
 class ProfileModelTest(TestCase):
 

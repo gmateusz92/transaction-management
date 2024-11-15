@@ -1,5 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -7,10 +8,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Transaction(models.Model):
     TRANSACTION_TYPE_CHOICES = [
-        ('income', 'Income'),
-        ('expense', 'Expense'),
+        ("income", "Income"),
+        ("expense", "Expense"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,8 +20,7 @@ class Transaction(models.Model):
     date = models.DateTimeField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
-    transaction_type = models.CharField(max_length=7, choices=TRANSACTION_TYPE_CHOICES)  
+    transaction_type = models.CharField(max_length=7, choices=TRANSACTION_TYPE_CHOICES)
 
     def __str__(self):
-        return f'{self.user} - {self.amount} ({self.transaction_type})'
-
+        return f"{self.user} - {self.amount} ({self.transaction_type})"
